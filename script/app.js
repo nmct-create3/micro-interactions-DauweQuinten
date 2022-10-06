@@ -28,10 +28,17 @@ const getDomElements = function () {
 
 const validateEmail = function () {
   const email = emailInput.value;
-  if (!isValidEmailAddress(email)) {
+  if (isEmpty(email)) {
+    console.info('Email is empty ❌');
     emailField.classList.add('has-error');
   } else {
-    emailField.classList.remove('has-error');
+    if (!isValidEmailAddress(email)) {
+      console.info("Email isn't valid ❌");
+      emailField.classList.add('has-error');
+    } else {
+      console.info('Email is valid ✅');
+      emailField.classList.remove('has-error');
+    }
   }
 };
 
